@@ -1,29 +1,23 @@
-var
-	_ = require("./math"),
-		fractionFromRange = _.fractionFromRange,
-		square = _.square
+import { fractionFromRange, square } from './math'
+const SpeedOfLight = 299792458
 
-var SpeedOfLight = 299792458 // m/s
+// wavelength at observer / wavelength at source
+// https://en.wikipedia.org/wiki/Relativistic_Doppler_effect#Motion_along_the_line_of_sight
+export function dopplerFactor(vel) {
+	const beta = vel / SpeedOfLight
+	return Math.sqrt((1 + beta) / (1 - beta))
+}
 
-var e = module.exports = {
-	// wavelength at observer / wavelength at source
-	// https://en.wikipedia.org/wiki/Relativistic_Doppler_effect#Motion_along_the_line_of_sight
-	dopplerFactor: function(vel) {
-		var beta = vel / SpeedOfLight
-		return Math.sqrt((1 + beta) / (1 - beta))
-	},
-
-	// http://codingmess.blogspot.com/2009/05/conversion-of-wavelength-in-nanometers.html
-	wavelengthToRgb: function(wavelengthNanometers) {
-		var rgb = wavelengthToUncorrectedRgb(wavelengthNanometers)
-		var c = luminanceCorrection(wavelengthNanometers)
-		return rgb.map(function(_) { return c * _ })
-	},
+// http://codingmess.blogspot.com/2009/05/conversion-of-wavelength-in-nanometers.html
+export function wavelengthToRgb(wavelengthNanometers) {
+	const rgb = wavelengthToUncorrectedRgb(wavelengthNanometers)
+	const c = luminanceCorrection(wavelengthNanometers)
+	return rgb.map(_ => c * _)
 }
 
 function wavelengthToUncorrectedRgb(w) {
-	var ffr = function(min, max) { return fractionFromRange(w, min, max) }
-	var ffrDown = function(min, max) { return -ffr(max, min) }
+	const ffr = (min, max) => fractionFromRange(w, min, max)
+	const ffrDown = (min, max) => -ffr(max, min)
 	/* Linear interpolation between:
 		380: [ 0, 0, 0 ]
 		440: [ 0, 0, 1 ]
@@ -50,13 +44,10 @@ function wavelengthToUncorrectedRgb(w) {
 }
 
 function luminanceCorrection(w) {
-	var ffr = function(min, max) { return fractionFromRange(w, min, max) }
+	const ffr = (min, max) => fractionFromRange(w, min, max)
 	return w < 420 ?
 		0.3 + 0.7 * ffr(350, 420) :
 		w <= 700 ?
 		1 :
 		0.3 + 0.7 * ffr(780, 700)
 }
-
-
-

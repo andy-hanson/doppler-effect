@@ -1,61 +1,46 @@
-"use strict"
+import assert from 'assert'
 
-var assert = require("assert")
+export const logScale = (fraction, min, max, exponent) =>
+	fractionToRange(scaleExponential(fraction, exponent), min, max)
 
-var e = module.exports = {
-	logScale: function(fraction, min, max, exponent) {
-		return e.fractionToRange(e.scaleExponential(fraction, exponent), min, max)
-	},
+export const logUnscale = (value, min, max, exponent) =>
+	unScaleExponential(fractionFromRange(value, min, max), exponent)
 
-	logUnscale: function(value, min, max, exponent) {
-		return e.unScaleExponential(e.fractionFromRange(value, min, max), exponent)
-	},
-
-	scaleExponential: function(fraction, exponent) {
-		assert(e.isFraction(fraction) && exponent >= 1)
-		return (Math.pow(exponent, fraction) - 1) / (exponent - 1)
-	},
-
-	unScaleExponential: function(fraction, exponent) {
-		assert(e.isFraction(fraction) && exponent >= 1)
-		return e.log(fraction * (exponent - 1) + 1, exponent)
-	},
-
-	clamp: function(val, min, max) {
-		return (val <= min) ? min : (val >= max) ? max : val;
-	},
-
-	log: function(a, b) {
-		return Math.log(a) / Math.log(b)
-	},
-
-	fractionToRange: function(fraction, min, max) {
-		assert(e.isFraction(fraction))
-		return min + (max - min) * fraction
-	},
-
-	fractionFromRange: function(num, min, max) {
-		return (num - min) / (max - min)
-	},
-
-	isFraction: function (fraction) {
-		return 0 <= fraction && fraction <= 1
-	},
-
-	square: function(num) {
-		return num * num
-	},
-
-	roundToNearest: function(a, b) {
-		return Math.round(a / b) * b
-	},
-
-	wrapToRange: function(num, min, max) {
-		return e.modulo(num - min, max - min) + min
-	},
-
-	modulo: function(a, b) {
-		return (a < 0) ? Math.abs(b) + (a % b) : a % b
-	}
+export function scaleExponential(fraction, exponent) {
+	assert(isFraction(fraction) && exponent >= 1)
+	return (Math.pow(exponent, fraction) - 1) / (exponent - 1)
 }
 
+export function unScaleExponential(fraction, exponent) {
+	assert(isFraction(fraction) && exponent >= 1)
+	return log(fraction * (exponent - 1) + 1, exponent)
+}
+
+export const clamp = (val, min, max) =>
+	(val <= min) ? min : (val >= max) ? max : val;
+
+export const log = (a, b) =>
+	Math.log(a) / Math.log(b)
+
+export function fractionToRange(fraction, min, max) {
+	assert(isFraction(fraction))
+	return min + (max - min) * fraction
+}
+
+export const fractionFromRange = (num, min, max) =>
+	(num - min) / (max - min)
+
+export const isFraction = fraction =>
+	0 <= fraction && fraction <= 1
+
+export const square = num =>
+	num * num
+
+export const roundToNearest = (a, b) =>
+	Math.round(a / b) * b
+
+export const wrapToRange = (num, min, max) =>
+	modulo(num - min, max - min) + min
+
+export const modulo = (a, b) =>
+	(a < 0) ? Math.abs(b) + (a % b) : a % b
