@@ -1,0 +1,49 @@
+#simulation {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  background: linear-gradient(to bottom right, rgba(238,238,238,0.533), #eee);
+  border-radius: 5%;
+}
+#hud {
+  height: 100px;
+}
+.hudEm {
+  float: left;
+  height: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+#velocityTextBox {
+  width: 3em;
+  border-radius: 0.5em;
+}
+#velocitySlider {
+  width: 200px;
+}
+.hudEm header {
+  height: 45%;
+}
+.hudEm h1 {
+  font-family: Montserrat;
+  color: #1e90ff;
+  margin: 0;
+  font-size: 120%;
+}
+.hudEm h2 {
+  font-family: Montserrat;
+  color: #1e90ff;
+  margin: 0;
+  font-size: 80%;
+}
+.num {
+  font-family: 'PT Sans';
+  font-size: 110%;
+  color: #000080;
+}
+.unit {
+  margin-left: 5%;
+  font-size: 100%;
+  color: #4169e1;
+}
