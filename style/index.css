@@ -8,42 +8,41 @@
 #hud {
   height: 100px;
 }
-.hudEm {
+#hud > div {
   float: left;
   height: 100px;
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
 }
-#velocityTextBox {
+#hud header {
+  height: 45%;
+  font-family: Montserrat;
+  color: #1e90ff;
+}
+#hud header h1,
+#hud header h2 {
+  margin: 0;
+}
+#hud header h1 {
+  font-size: 120%;
+}
+#hud header h2 {
+  font-size: 80%;
+}
+#hud #velocityTextBox {
   width: 3em;
   border-radius: 0.5em;
 }
-#velocitySlider {
+#hud #velocitySlider {
   width: 200px;
 }
-.hudEm header {
-  height: 45%;
-}
-.hudEm h1 {
-  font-family: Montserrat;
-  color: #1e90ff;
-  margin: 0;
-  font-size: 120%;
-}
-.hudEm h2 {
-  font-family: Montserrat;
-  color: #1e90ff;
-  margin: 0;
-  font-size: 80%;
-}
-.num {
+#hud .num {
   font-family: 'PT Sans';
   font-size: 110%;
   color: #000080;
 }
-.unit {
+#hud .unit {
   margin-left: 5%;
-  font-size: 100%;
   color: #4169e1;
 }
