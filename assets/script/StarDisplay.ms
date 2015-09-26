@@ -1,4 +1,4 @@
-use
+import
 	global document Image setTimeout
 	.draw circle color-image rgb->style
 	.math wrap-to-range

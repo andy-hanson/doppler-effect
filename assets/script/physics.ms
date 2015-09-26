@@ -1,11 +1,11 @@
-use
+import
 	.math range->fraction
 
 Speed-Of-Light = 299792456
 
 doppler-factor. |vel
 	| wavelength at observer / wavelength at source
-	| https://en.wikipedia.org/wiki/Relativistic_Doppler_effect#Motion_along_the_line_of_sight
+	| en.wikipedia.org/wiki/Relativistic_Doppler_effect#Motion_along_the_line_of_sight
 	beta = / vel Speed-Of-Light
 	Math.sqrt (+ 1 beta) (- 1 beta)
 

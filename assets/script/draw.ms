@@ -1,4 +1,4 @@
-use
+import
 	global document
 	msl.js js-sub js-set
 

@@ -1,4 +1,4 @@
-use
+import
 	global document
 	numeral
 	.math clamp log-scale log-unscale round-to-nearest
