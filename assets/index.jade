@@ -12,11 +12,12 @@ html
 			requirejs.config({
 				baseUrl: 'lib',
 				paths: {
-					msl: 'msl/dist',
+					msl: 'msl/lib',
 					numeral: 'numeral/min/numeral.min'
 				}
 			})
-			require([ "../script/main" ])
+			// kludge: need bootstrap first due to lazy modules
+			require([ 'msl/private/bootstrap' ], () => require([ '../script/main' ]))
 
 	body
 		a(href='//github.com/andy-hanson/doppler-effect')

@@ -6,6 +6,5 @@
 		"jstransformer-mason": "mason-lang/jstransformer-mason",
 		"jstransformer-jade": "0.1.0",
 		"jstransformer-stylus": "1.0.0"
-	},
-	"license": "WTFPL"
+	}
 }
